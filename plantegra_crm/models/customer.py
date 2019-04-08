@@ -7,6 +7,9 @@ class Customer(models.Model):
     phone_number = PhoneNumberField(blank=True)
     contact = models.CharField(max_length=200, blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 def get_sentinel_customer() -> Customer:
     """ Returns a user object which can be used instead of a deleted user. """
