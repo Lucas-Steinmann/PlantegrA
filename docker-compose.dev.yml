@@ -5,10 +5,14 @@ services:
     image: postgres
     network_mode: bridge
     volumes:
-    - ./.dbdata:/var/lib/postgresql:rw
+    - dbdata:/var/lib/postgresql:rw
     ports:
     - 5432:5432
     environment:
       POSTGRES_USER: plantegra-dev
       POSTGRES_PASSWORD: plantegra-dev
       POSTGRES_DB: plantegra
+
+volumes:
+  dbdata:
+
