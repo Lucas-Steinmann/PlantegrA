@@ -38,7 +38,6 @@ class WorkLocationAddressInline(admin.TabularInline):
         return field
 
 
-@admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
     inlines = (InvoiceAddressInline, WorkLocationAddressInline)
     fieldsets = (
@@ -50,6 +49,7 @@ class CustomerAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User)
+admin.site.register(Customer, CustomerAdmin)
 admin.site.register(InvoiceAddress, InvoiceAddressAdmin)
 admin.site.register(WorkLocationAddress, WorkLocationAddressAdmin)
 admin.site.register(Address)
