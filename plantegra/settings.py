@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'plantegra_crm.apps.PlantegraCRMConfig',
     'plantegra_staff.apps.PlantegraStaffConfig',
+    'plantegra_resources.apps.PlantegraResourcesConfig',
     'phonenumber_field',
 ]
 
