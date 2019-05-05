@@ -1,0 +1,4 @@
+
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+#MEDIA_ROOT = ''
+
