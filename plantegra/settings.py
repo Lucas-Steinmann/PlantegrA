@@ -132,4 +132,7 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-from .local_settings import *
+try:
+    from .local_settings import *
+except ImportError:
+    pass
