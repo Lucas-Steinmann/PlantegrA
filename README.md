@@ -9,9 +9,10 @@ CRM and Resource Management for IntegrA
 3. Start docker-compose.dev.yml for running a PostgreSQL server: `docker-compose -f docker-compose.dev.yml up` 
 (Alternatively you can run your DB the way you want (e.g. MySQL or SQLite), but you'll have to change the `DATABASES` setting, which is defined in [settings](plantegra/settings.py).
 Please do not commit these changes. Instead overwrite them in the [local settings](plantegra/local_settings.py), which is ignored by Git).
-4. Migrate Database Schema `python manage.py migrate`
-5. Create Super User: `python manage.py createsuperuser`
-6. Run server: `python manage.py runserver`
+4. Install requirements `python migrate -r requirements.txt`
+5. Migrate Database Schema `python manage.py migrate`
+6. Create Super User: `python manage.py createsuperuser`
+7. Run server: `python manage.py runserver`
 
 ## Reset DB data
 
