@@ -1,22 +1,8 @@
-from drf_yasg import openapi
-from drf_yasg.views import get_schema_view
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets
 
 from plantegra_crm.models import User, Customer, Appointment, Address
 from plantegra_crm.serializers import UserSerializer, CustomerSerializer, AppointmentSerializer, \
     AddressSerializer
-
-schema_view = get_schema_view(
-    openapi.Info(
-        title="PlantegrA API",
-        default_version='v1',
-        description="The full data access and manipulation API for the PlantegrA CRM/RMS/HR",
-        terms_of_service="You are not allowed to use this service.",
-        contact=openapi.Contact(email="jonas@integra-lahr.de"),
-    ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
-)
 
 
 class UserViewSet(viewsets.ModelViewSet):
