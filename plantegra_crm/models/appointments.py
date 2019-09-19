@@ -2,12 +2,12 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from plantegra_crm.models import WorkLocationAddress
+from plantegra_crm.models import Address
 
 
 class Appointment(models.Model):
     description = models.CharField(max_length=200, blank=True)
-    location = models.ForeignKey(WorkLocationAddress, on_delete=models.CASCADE)
+    location = models.ForeignKey(Address, on_delete=models.CASCADE)
     start_date = models.DateTimeField(verbose_name=_("Start Date"), name="start_date")
     finish_date = models.DateTimeField(verbose_name=_("Finish Date"), name="finish_date")
 

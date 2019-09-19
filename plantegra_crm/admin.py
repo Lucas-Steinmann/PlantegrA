@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from plantegra_crm.models import InvoiceAddress, WorkLocationAddress, Address, Customer
+from plantegra_crm.models import Address, Customer
 from plantegra_crm.models.appointments import Appointment
 from plantegra_crm.models.user import User
 
@@ -14,16 +14,8 @@ class WorkLocationAddressAdmin(admin.ModelAdmin):
     list_display = ('short_display', 'customer')
 
 
-class InvoiceAddressAdmin(admin.ModelAdmin):
-    list_display = ('short_display', 'customer')
-
-
-class InvoiceAddressInline(admin.StackedInline):
-    model = InvoiceAddress
-
-
-class WorkLocationAddressInline(admin.TabularInline):
-    model = WorkLocationAddress
+class AddressInline(admin.TabularInline):
+    model = Address
 
     def formfield_for_dbfield(self, db_field, request, **kwargs):
         field = super().formfield_for_dbfield(db_field, request, **kwargs)
@@ -35,11 +27,13 @@ class WorkLocationAddressInline(admin.TabularInline):
             field.widget.attrs['style'] = 'width: 10em;'
         elif db_field.name == 'country':
             field.widget.attrs['style'] = 'width: 2em;'
+        elif db_field.name == 'is_invoice':
+            field.widget.attrs['style'] = 'width: 2em;'
         return field
 
 
 class CustomerAdmin(admin.ModelAdmin):
-    inlines = (InvoiceAddressInline, WorkLocationAddressInline)
+    inlines = (AddressInline,)
     fieldsets = (
         (None, {
             'fields': ('name', 'phone_number', 'contact')
@@ -50,7 +44,5 @@ class CustomerAdmin(admin.ModelAdmin):
 
 admin.site.register(User)
 admin.site.register(Customer, CustomerAdmin)
-admin.site.register(InvoiceAddress, InvoiceAddressAdmin)
-admin.site.register(WorkLocationAddress, WorkLocationAddressAdmin)
 admin.site.register(Address)
 admin.site.register(Appointment, AppointmentAdmin)

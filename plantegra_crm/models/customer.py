@@ -7,6 +7,11 @@ class Customer(models.Model):
     phone_number = PhoneNumberField(blank=True)
     contact = models.CharField(max_length=200, blank=True)
 
+    @property
+    def invoice_address(self):
+        from plantegra_crm.models import Address
+        return Address.objects.filter(is_invoice=True, customer=self).get()
+
     def __str__(self):
         return self.name
 

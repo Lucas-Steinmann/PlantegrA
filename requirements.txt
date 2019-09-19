@@ -3,3 +3,8 @@ psycopg2
 django-phonenumber-field
 phonenumbers
 Pillow
+djangorestframework
+markdown
+django-filter
+drf-yasg[validation]
+packaging # is actually a dependency of drf-yasg. So when drf-yasg fixes their dependencies, remove this line

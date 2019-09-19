@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'plantegra_staff.apps.PlantegraStaffConfig',
     'plantegra_resources.apps.PlantegraResourcesConfig',
     'phonenumber_field',
+    'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

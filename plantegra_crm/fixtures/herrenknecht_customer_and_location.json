@@ -1,0 +1,39 @@
+[
+{
+  "model": "plantegra_crm.customer",
+  "pk": 1,
+  "fields": {
+    "name": "Herrenknecht",
+    "phone_number": "+4978217550",
+    "contact": "Hans J\u00fcrgen"
+  }
+},
+{
+  "model": "plantegra_crm.address",
+  "pk": 1,
+  "fields": {
+    "street_line1": "Herrenknecht-Stra\u00dfe 1",
+    "street_line2": "",
+    "zipcode": "77933",
+    "city": "Lahr/Schwanau",
+    "state": "BW",
+    "country": "Germany",
+    "is_invoice": true,
+    "customer": 1
+  }
+},
+{
+  "model": "plantegra_crm.address",
+  "pk": 2,
+  "fields": {
+    "street_line1": "Herrenknecht-Stra\u00dfe 1",
+    "street_line2": "",
+    "zipcode": "77933",
+    "city": "Schwanau",
+    "state": "BW",
+    "country": "Germany",
+    "is_invoice": false,
+    "customer": 1
+  }
+}
+]
