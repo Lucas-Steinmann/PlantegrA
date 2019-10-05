@@ -17,6 +17,7 @@ router.register(r'users', crm_views.UserViewSet)
 router.register(r'customers', crm_views.CustomerViewSet)
 router.register(r'appointments', crm_views.AppointmentViewSet)
 router.register(r'addresses', crm_views.AddressViewSet)
+router.register(r'taskforces', crm_views.TaskForceViewSet)
 router.register(r'vehicles', res_views.VehicleViewSet)
 router.register(r'employees', staff_views.EmployeeViewSet)
 

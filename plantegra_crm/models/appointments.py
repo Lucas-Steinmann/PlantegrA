@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from plantegra_crm.models import Address
+from plantegra_crm.models import Address, TaskForce
 
 
 class Appointment(models.Model):
@@ -10,10 +10,14 @@ class Appointment(models.Model):
     location = models.ForeignKey(Address, on_delete=models.CASCADE)
     start_date = models.DateTimeField(verbose_name=_("Start Date"), name="start_date")
     finish_date = models.DateTimeField(verbose_name=_("Finish Date"), name="finish_date")
+    task_force = models.ForeignKey(TaskForce, on_delete=models.SET_NULL, null=True,
+                                   related_name='appointments')
 
     def clean(self):
         if self.start_date > self.finish_date:
             raise ValidationError(_("Start date of appointment must be earlier than or equal to the finish date."))
+        if self.start_date.day == self.task_force.working_day.day:
+            raise ValidationError(_("All appointments of a task force should be on the day of the task force."))
 
     def customer(self):
         return self.location.customer

@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 
-from plantegra_crm.models import User, Customer, Appointment, Address
+from plantegra_crm.models import User, Customer, Appointment, Address, TaskForce
 from plantegra_crm.serializers import UserSerializer, CustomerSerializer, AppointmentSerializer, \
-    AddressSerializer
+    AddressSerializer, TaskForceSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -15,7 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class CustomerViewSet(viewsets.ModelViewSet):
     """ API endpoint that allows customer to be viewed or edited. """
-    queryset = Customer.objects.all().order_by('-name')
+    queryset = Customer.objects.all().order_by('name')
     serializer_class = CustomerSerializer
 
 
@@ -27,6 +27,13 @@ class AppointmentViewSet(viewsets.ModelViewSet):
 
 class AddressViewSet(viewsets.ModelViewSet):
     """ API endpoint that allows work location to be viewed or edited. """
-    queryset = Address.objects.all().order_by('-zipcode')
+    queryset = Address.objects.all().order_by('zipcode')
     serializer_class = AddressSerializer
+
+
+class TaskForceViewSet(viewsets.ModelViewSet):
+    """ API endpoint that allows task forces to be viewed or edited. """
+    queryset = TaskForce.objects.all().order_by('-working_day')
+    serializer_class = TaskForceSerializer
+
 

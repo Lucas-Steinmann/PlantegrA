@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from plantegra_crm.models import Address, Customer
+from plantegra_crm.models import Address, Customer, TaskForce
 from plantegra_crm.models.appointments import Appointment
 from plantegra_crm.models.user import User
 
@@ -12,6 +12,11 @@ class AppointmentAdmin(admin.ModelAdmin):
 
 class WorkLocationAddressAdmin(admin.ModelAdmin):
     list_display = ('short_display', 'customer')
+
+
+class TaskForceAdmin(admin.ModelAdmin):
+    model = TaskForce
+    list_display = ('working_day', 'ellipsed_member_list', 'appointment_count', 'vehicle')
 
 
 class AddressInline(admin.TabularInline):
@@ -46,3 +51,4 @@ admin.site.register(User)
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Address)
 admin.site.register(Appointment, AppointmentAdmin)
+admin.site.register(TaskForce, TaskForceAdmin)

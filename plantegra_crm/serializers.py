@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from plantegra_crm.models import User, Customer, Appointment, Address
+from plantegra_crm.models import User, Customer, Appointment, Address, TaskForce
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -25,3 +25,9 @@ class AddressSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Address
         fields = ['street_line1', 'street_line2', 'zipcode', 'city', 'state', 'country']
+
+
+class TaskForceSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = TaskForce
+        fields = ['members', 'appointments', 'vehicle']
