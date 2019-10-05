@@ -8,3 +8,4 @@ markdown
 django-filter
 drf-yasg[validation]
 packaging # is actually a dependency of drf-yasg. So when drf-yasg fixes their dependencies, remove this line
+django-cors-headers
