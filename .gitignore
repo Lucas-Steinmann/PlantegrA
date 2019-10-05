@@ -12,3 +12,4 @@ __pycache__/
 venv/
 media/
 plantegra/local_settings.py
+.vscode/settings.json
