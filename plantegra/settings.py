@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'plantegra_crm.apps.PlantegraCRMConfig',
     'plantegra_staff.apps.PlantegraStaffConfig',
     'plantegra_resources.apps.PlantegraResourcesConfig',
+    'django_filters',
     'phonenumber_field',
     'rest_framework',
     'drf_yasg',
@@ -148,3 +149,7 @@ except ImportError:
     pass
 
 PHONENUMBER_DEFAULT_REGION = "DE"
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}

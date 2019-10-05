@@ -1,3 +1,5 @@
+import django_filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
 from plantegra_crm.models import User, Customer, Appointment, Address, TaskForce
@@ -20,10 +22,20 @@ class CustomerViewSet(viewsets.ModelViewSet):
     serializer_class = CustomerSerializer
 
 
+class AppointmentFilter(django_filters.FilterSet):
+    class Meta:
+        model = Appointment
+        fields = {
+            'start_date': ['gt', 'lt']
+        }
+
+
 class AppointmentViewSet(viewsets.ModelViewSet):
     """ API endpoint that allows appointments to be viewed or edited. """
     queryset = Appointment.objects.all().order_by('-start_date')
     serializer_class = AppointmentSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = AppointmentFilter
 
 
 class AddressViewSet(viewsets.ModelViewSet):

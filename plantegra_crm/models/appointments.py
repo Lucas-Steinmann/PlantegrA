@@ -16,7 +16,7 @@ class Appointment(models.Model):
     def clean(self):
         if self.start_date > self.finish_date:
             raise ValidationError(_("Start date of appointment must be earlier than or equal to the finish date."))
-        if self.task_force and self.start_date.day == self.task_force.working_day.day:
+        if self.task_force and self.start_date.date() != self.task_force.working_day:
             raise ValidationError(_("All appointments of a task force should be on the day of the task force."))
 
     def customer(self):

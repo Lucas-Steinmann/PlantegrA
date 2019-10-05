@@ -30,4 +30,4 @@ class AddressSerializer(serializers.HyperlinkedModelSerializer):
 class TaskForceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = TaskForce
-        fields = ['id', 'members', 'appointments', 'vehicle', 'url']
+        fields = ['id', 'members', 'appointments', 'vehicle', 'working_day', 'url']

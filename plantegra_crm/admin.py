@@ -7,7 +7,7 @@ from plantegra_crm.models.user import User
 
 
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ('description', 'customer', 'date_display', 'time_display')
+    list_display = ('description', 'customer', 'task_force', 'date_display', 'time_display')
 
 
 class WorkLocationAddressAdmin(admin.ModelAdmin):
