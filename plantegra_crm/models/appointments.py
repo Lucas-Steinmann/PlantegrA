@@ -6,21 +6,21 @@ from plantegra_crm.models import Address, TaskForce
 
 
 class Appointment(models.Model):
-    description = models.CharField(max_length=200, blank=True)
-    location = models.ForeignKey(Address, on_delete=models.CASCADE)
+    description = models.CharField(max_length=200, blank=True, default="")
+    location = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
     start_date = models.DateTimeField(verbose_name=_("Start Date"), name="start_date")
     finish_date = models.DateTimeField(verbose_name=_("Finish Date"), name="finish_date")
-    task_force = models.ForeignKey(TaskForce, on_delete=models.SET_NULL, null=True,
+    task_force = models.ForeignKey(TaskForce, on_delete=models.SET_NULL, null=True, blank=True,
                                    related_name='appointments')
 
     def clean(self):
         if self.start_date > self.finish_date:
             raise ValidationError(_("Start date of appointment must be earlier than or equal to the finish date."))
-        if self.start_date.day == self.task_force.working_day.day:
+        if self.task_force and self.start_date.day == self.task_force.working_day.day:
             raise ValidationError(_("All appointments of a task force should be on the day of the task force."))
 
     def customer(self):
-        return self.location.customer
+        return _("No customer") if not self.location else self.location.customer
 
     def date_display(self):
         # TODO: internationalization

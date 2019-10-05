@@ -9,9 +9,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Employee(models.Model):
     first_name = models.CharField(verbose_name=_("First Name"), max_length=100)
     last_name = models.CharField(verbose_name=_("Last Name"), max_length=100)
-    profile_image = models.ImageField(verbose_name=_("Profile Image"), null=True)
-    phone_number = PhoneNumberField(verbose_name=_("Phone Number"), null=True)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL)
+    profile_image = models.ImageField(verbose_name=_("Profile Image"), null=True, blank=True)
+    phone_number = PhoneNumberField(verbose_name=_("Phone Number"), null=True, blank=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL)
 
     @property
     def fullname(self) -> str:

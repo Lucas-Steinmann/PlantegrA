@@ -21,7 +21,7 @@ class TaskForce(models.Model):
     A task force is a group of employees which work together on multiple appointments on a single day.
     """
     members = ManyToManyField(Employee, verbose_name=_("Members"))
-    vehicle = ForeignKey(Vehicle, verbose_name=_("Vehicle"), on_delete=models.SET_NULL, null=True)
+    vehicle = ForeignKey(Vehicle, verbose_name=_("Vehicle"), on_delete=models.SET_NULL, null=True, blank=True)
     # This is the date at which the task force operates.
     # This field could be derived from the dates of the appointments.
     # But we opted to adding this field for two reasons:

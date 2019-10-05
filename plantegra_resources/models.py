@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Resource(models.Model):
     name = models.CharField(max_length=200)
-    image = models.ImageField(verbose_name=_("Image"), null=True)
+    image = models.ImageField(verbose_name=_("Image"), blank=True, null=True)
 
     def __str__(self):
         return self.name

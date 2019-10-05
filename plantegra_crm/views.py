@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from plantegra_crm.models import User, Customer, Appointment, Address, TaskForce
 from plantegra_crm.serializers import UserSerializer, CustomerSerializer, AppointmentSerializer, \
     AddressSerializer, TaskForceSerializer
+from plantegra_staff.serializers import EmployeeSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -37,3 +38,11 @@ class TaskForceViewSet(viewsets.ModelViewSet):
     serializer_class = TaskForceSerializer
 
 
+#class AvailableEmployees(viewsets.ReadOnlyModelViewSet):
+#    serializer_class = EmployeeSerializer
+#
+#    def get_queryset(self):
+#        """ Return all employees which have not been """
+#        day = self.request.day
+#        return free_workers(day)
+#
