@@ -44,10 +44,19 @@ class AddressViewSet(viewsets.ModelViewSet):
     serializer_class = AddressSerializer
 
 
+class TaskForceFilter(django_filters.FilterSet):
+    class Meta:
+        model = TaskForce
+        fields = {
+            'working_day': ['exact']
+        }
+
 class TaskForceViewSet(viewsets.ModelViewSet):
     """ API endpoint that allows task forces to be viewed or edited. """
     queryset = TaskForce.objects.all().order_by('-working_day')
     serializer_class = TaskForceSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = TaskForceFilter
 
 
 #class AvailableEmployees(viewsets.ReadOnlyModelViewSet):
