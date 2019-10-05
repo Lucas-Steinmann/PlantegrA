@@ -51,6 +51,7 @@ class TaskForceFilter(django_filters.FilterSet):
             'working_day': ['exact']
         }
 
+
 class TaskForceViewSet(viewsets.ModelViewSet):
     """ API endpoint that allows task forces to be viewed or edited. """
     queryset = TaskForce.objects.all().order_by('-working_day')
@@ -64,6 +65,6 @@ class TaskForceViewSet(viewsets.ModelViewSet):
 #
 #    def get_queryset(self):
 #        """ Return all employees which have not been """
-#        day = self.request.day
+#        day = self.request.kwargs['']
 #        return free_workers(day)
-#
+
