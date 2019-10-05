@@ -3,38 +3,28 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {
-    apiserver: {
-      url: "http://localhost:8000/api/",
-      endpoints: {
-        addresses: "addresses/",
-        users: "users/",
-        customers: "customers/",
-        appointments: "appointments/",
-        vehicles: "vehicles/",
-        employees: "employees/"
-      }
-    }
-  },
+var apiserver = {
+  url: "http://localhost:8000/api/",
+  endpoints: {
+    addresses: "addresses/",
+    users: "users/",
+    customers: "customers/",
+    appointments: "appointments/",
+    vehicles: "vehicles/",
+    employees: "employees/",
+    taskforces: "taskforces/"
+  }
+};
+
+export const store = new Vuex.Store({
+  state: {},
   getters: {
-    addresses: state => {
-      return state.apiserver.url + state.apiserver.endpoints.addresses;
-    },
-    users: state => {
-      return state.apiserver.url + state.apiserver.endpoints.users;
-    },
-    customers: state => {
-      return state.apiserver.url + state.apiserver.endpoints.customers;
-    },
-    appointments: state => {
-      return state.apiserver.url + state.apiserver.endpoints.appointments;
-    },
-    vehicles: state => {
-      return state.apiserver.url + state.apiserver.endpoints.vehicles;
-    },
-    employees: state => {
-      return state.apiserver.url + state.apiserver.endpoints.employees;
-    }
+    addresses: () => apiserver.url + apiserver.endpoints.addresses,
+    users: () => apiserver.url + apiserver.endpoints.users,
+    customers: () => apiserver.url + apiserver.endpoints.customers,
+    appointments: () => apiserver.url + apiserver.endpoints.appointments,
+    vehicles: () => apiserver.url + apiserver.endpoints.vehicles,
+    employees: () => apiserver.url + apiserver.endpoints.employees,
+    taskforces: () => apiserver.url + apiserver.endpoints.taskforces
   }
 });

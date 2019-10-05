@@ -1,5 +1,6 @@
 <template>
   <div>
+    Wetter kommt hier
   </div>
 </template>
 

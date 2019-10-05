@@ -1,9 +1,9 @@
 import axios from "axios";
 
 class AxiosClient {
-  get(url) {
+  async get(url) {
     var serverResponse = { hasError: false, data: null };
-    axiosInstance()
+    await axiosInstance()
       .get(url)
       .then(response => {
         if (response.status == StatusOk) {
@@ -108,9 +108,9 @@ const axiosInstance = () => {
   let instance = axios.create();
 
   instance.defaults.crossdomain = true;
-  instance.defaults.validateStatus = function() {
+  /* instance.defaults.validateStatus = function() {
     return true;
-  };
+  }; */
 
   return instance;
 };
