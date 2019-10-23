@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row>
+    <v-row style="height: 100%">
       <v-col sm="2">
         <DayField :date="date" />
       </v-col>
@@ -8,7 +8,9 @@
         <TaskForceCard :taskforce="taskforce" />
       </v-col>
     </v-row>
+    <v-divider></v-divider>
   </div>
+
 </template>
 
 <script>
@@ -36,3 +38,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .dayrow {
+  }
+  .week-wrapper{
+    height: 100%;
+  }
+</style>

@@ -1,7 +1,10 @@
 <template>
   <div v-if="date" class="DayField">
-    <span>{{ date.getDay() | weekDayText }}, {{ date | formatDate }}</span>
-    <v-divider></v-divider>
+    <div class="date">
+      <h3>{{ date.getDay() | weekDayText }}</h3>
+      <span>{{ date | formatDate }}</span>
+
+    </div>
     <Weather />
   </div>
 </template>
@@ -49,4 +52,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+  h3 {
+    text-align: center;
+  }
+  .date {
+    text-align: center;
+  }
+</style>

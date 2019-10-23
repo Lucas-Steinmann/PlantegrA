@@ -1,6 +1,6 @@
 <template>
   <div>
-    Wetter kommt hier
+   <!-- Wetter kommt hier -->
   </div>
 </template>
 

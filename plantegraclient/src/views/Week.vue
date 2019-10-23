@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <DayRow v-for="day in weekDays" :key="day.getDay()" :date="day" />
+  <div class="week-wrapper d-flex flex-column justify-space-around align-content-stretch">
+    <DayRow class="dayrow" v-for="day in weekDays" :key="day.getDay()" :date="day" />
   </div>
 </template>
 
@@ -20,3 +20,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .dayrow {
+      margin-top: 0;
+  }
+  .week-wrapper{
+    height: 100%;
+    width: 100%;
+  }
+</style>
