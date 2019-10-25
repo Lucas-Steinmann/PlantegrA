@@ -13,3 +13,5 @@ venv/
 media/
 plantegra/local_settings.py
 .vscode/settings.json
+
+node_modules/

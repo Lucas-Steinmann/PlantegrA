@@ -1,7 +1,8 @@
 <template>
   <v-row class="nomargin">
     <v-avatar size="36px">
-      <img :src="employee.profile_image" alt="X" />
+      <img v-if="employee.profile_image != null" :src="employee.profile_image" alt="X" />
+      <img v-else :src="profile_default_image" alt="X" />
     </v-avatar>
   </v-row>
 </template>
@@ -11,7 +12,9 @@ import { employeeService } from "../services";
 
 export default {
   data: () => ({
-    employee: {}
+    employee: {},
+    //TODO: change hardcoded path to dynamic?
+    profile_default_image: "http://localhost:8000/media/profile-default.jpg"
   }),
   props: {
     employeeid: Number
