@@ -7,10 +7,15 @@ class CalcService {
   getDaysOfCurrentWeek() {
     var ret = [];
     //var monday = this.getMonday(new Date());
-    //Debug week
-    var monday = new Date(Date.parse("21 Oct 2019"));
+    var monday = new Date(Date.parse("21 Oct 2019"));  //Debug version with hardcoded date
     for (let i = 0; i < 6; i++) {
       var weekday = new Date();
+      //Real version
+      //ret.push(new Date(weekday.setDate(monday.getDate() + i)));
+
+      //Debug set Week
+      weekday.setFullYear(monday.getFullYear());
+      weekday.setMonth(monday.getMonth());
       ret.push(new Date(weekday.setDate(monday.getDate() + i)));
     }
     return ret;
