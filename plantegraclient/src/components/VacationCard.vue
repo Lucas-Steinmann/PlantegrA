@@ -1,13 +1,13 @@
 <template>
-    <v-card class="vacationcard">
+    <v-card color="secondary" dark class="vacationcard">
         Urlaub
-        <v-col class="members">
+        <div class="d-flex align-content-start flex-wrap">
             <EmployeeImage
                     v-for="employee in employeesOnVacation"
                     :key="employee.id"
                     :employeeid="employee.id"
             />
-        </v-col>
+        </div>
     </v-card>
 </template>
 
@@ -30,7 +30,6 @@
         max-width: 400px;
         width: 100px;
         height: 100px;
-        background-color: red;
     }
     .nomargin {
         margin: 0px;
