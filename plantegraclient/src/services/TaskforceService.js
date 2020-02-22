@@ -11,7 +11,6 @@ class TaskforceService {
   }
   async getByDate(date) {
     var dateString = moment(date.toString()).format("YYYY-MM-DD");
-    console.log(dateString);
     return await axiosClient.get(
       store.getters.taskforces + "?working_day=" + dateString
     );

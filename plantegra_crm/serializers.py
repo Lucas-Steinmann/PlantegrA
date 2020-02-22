@@ -24,7 +24,7 @@ class AppointmentSerializer(serializers.ModelSerializer):
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
-        fields = ['id', 'street_line1', 'street_line2', 'zipcode', 'city', 'state', 'country', 'url']
+        fields = ['id', 'street_line1', 'street_line2', 'zipcode', 'city', 'state', 'country', 'customer', 'url']
 
 
 class TaskForceSerializer(serializers.ModelSerializer):

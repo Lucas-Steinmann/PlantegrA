@@ -1,18 +1,22 @@
 <template>
-  <v-card class="taskforce">
-    {{ taskforce.working_day }}
+  <v-card class="taskforce" color="accent" dark>
     <v-row dense class="nomargin">
-      <v-col class="members">
-        <EmployeeImage
-          v-for="memberid in taskforce.members"
-          :key="memberid"
-          :employeeid="memberid"
-        />
+      <v-col class="members" cols="3">
+        <div class="d-flex align-content-start flex-wrap">
+          <EmployeeImage
+            v-for="memberid in taskforce.members"
+            :key="memberid"
+            :employeeid="memberid"
+          />
+        </div>
       </v-col>
       <v-col>
         <p>{{ vehicle }}</p>
         <v-row dense v-for="appointment in appointments" :key="appointment.id">
-          {{ appointment.description }}
+          <v-row>
+            <v-col>{{ appointment.customer.name }}</v-col>
+            <v-col>{{ appointment.description }}</v-col>
+          </v-row>
         </v-row>
       </v-col>
     </v-row>
@@ -21,7 +25,12 @@
 
 <script>
 import EmployeeImage from "../components/EmployeeImage";
-import { vehicleService, appointmentService } from "../services";
+import {
+  vehicleService,
+  appointmentService,
+  addressService,
+  customerService
+} from "../services";
 
 export default {
   components: {
@@ -48,7 +57,24 @@ export default {
       appointmentids.forEach(id => {
         appointmentService.getById(id).then(response => {
           if (response.hasError === false) {
-            this.appointments.push(response.data);
+            var appointment = response.data;
+            appointment.address = null;
+            appointment.customer = null;
+            if (appointment.location) {
+              addressService.getById(appointment.location).then(response => {
+                if (response.hasError === false) {
+                  appointment.address = response.data;
+                  customerService
+                    .getById(appointment.address.customer)
+                    .then(response => {
+                      if (response.hasError === false) {
+                        appointment.customer = response.data;
+                      }
+                    });
+                }
+              });
+            }
+            this.appointments.push(appointment);
           }
         });
       });

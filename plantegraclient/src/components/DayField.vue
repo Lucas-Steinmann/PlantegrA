@@ -3,7 +3,6 @@
     <div class="date">
       <h3>{{ date.getDay() | weekDayText }}</h3>
       <span>{{ date | formatDate }}</span>
-
     </div>
     <Weather />
   </div>
@@ -53,10 +52,10 @@ export default {
 </script>
 
 <style scoped>
-  h3 {
-    text-align: center;
-  }
-  .date {
-    text-align: center;
-  }
+h3 {
+  text-align: center;
+}
+.date {
+  text-align: center;
+}
 </style>
